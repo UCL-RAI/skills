@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "name": "UCL-RAI Skills",
+  "description": "Reusable agent skills for research, robotics, AI, and engineering workflows.",
+  "homepage": "https://github.com/UCL-RAI/skills",
+  "maintainers": [
+    "UCL Robotics & AI students"
+  ],
+  "contributors": [
+    "ylhaichen"
+  ],
+  "skills": []
+}

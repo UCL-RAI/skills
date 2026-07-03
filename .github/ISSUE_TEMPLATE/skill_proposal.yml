@@ -1,0 +1,34 @@
+name: Skill proposal
+description: Propose a new reusable skill for this repository.
+title: "[Skill]: "
+labels:
+  - skill-proposal
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What repeatable workflow should this skill solve?
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Users
+      description: Who would use this skill?
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Proposed workflow
+      description: List the concrete steps the skill should follow.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: How can reviewers check that the skill works?
+    validations:
+      required: true
