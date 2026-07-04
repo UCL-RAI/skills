@@ -45,6 +45,10 @@ Run or describe checks that prove the workflow worked.
 python scripts/validate_catalog.py
 ```
 
+## Completion
+
+State the artifact or condition that proves the skill is done. Avoid vague criteria such as "make it useful."
+
 ## Notes
 
 Keep this section short. Add links to primary documentation or papers if the skill depends on external knowledge.

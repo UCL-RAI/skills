@@ -3,11 +3,291 @@
   "name": "UCL-RAI Skills",
   "description": "Reusable agent skills for research, robotics, AI, and engineering workflows.",
   "homepage": "https://github.com/UCL-RAI/skills",
+  "license": "MIT",
+  "compatibility": [
+    "codex",
+    "claude-code-manual",
+    "agent-skills-style"
+  ],
   "maintainers": [
     "UCL Robotics & AI students"
   ],
   "contributors": [
     "ylhaichen"
   ],
-  "skills": []
+  "skills": [
+    {
+      "id": "rai-research-flow",
+      "name": "RAI Research Flow",
+      "description": "Routes Robotics & AI research work across search, reading, evidence mapping, ideation, paper writing, figure planning, and audits. Use when the user asks to enter a field, build a literature base, brainstorm a project, write a survey or paper, or coordinate multiple research skills.",
+      "path": "skills/flows/rai-research-flow",
+      "type": "flow",
+      "domain": "orchestration",
+      "maturity": "draft",
+      "depends_on": [
+        "paper-search-protocol",
+        "paper-reading-card",
+        "evidence-matrix-builder",
+        "research-idea-rubric",
+        "venue-paper-outline",
+        "citation-integrity-auditor",
+        "scientific-figure-director",
+        "paper-red-team-review"
+      ],
+      "tags": [
+        "robotics",
+        "ai",
+        "research",
+        "workflow"
+      ],
+      "source_inspiration": [
+        "anthropics/skills",
+        "mattpocock/skills",
+        "obra/superpowers",
+        "addyosmani/agent-skills"
+      ]
+    },
+    {
+      "id": "rai-paper-flow",
+      "name": "RAI Paper Flow",
+      "description": "Routes Robotics & AI conference paper writing for ICRA, RSS, CoRL, ICML, ICLR, and NeurIPS style submissions. Use when the user asks to outline, draft, revise, audit, or prepare a research paper for Robotics or AI venues.",
+      "path": "skills/flows/rai-paper-flow",
+      "type": "flow",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "research-idea-rubric",
+        "venue-paper-outline",
+        "citation-integrity-auditor",
+        "scientific-figure-director",
+        "paper-red-team-review"
+      ],
+      "tags": [
+        "paper-writing",
+        "robotics",
+        "machine-learning",
+        "conference"
+      ],
+      "source_inspiration": [
+        "mattpocock/skills",
+        "obra/superpowers"
+      ]
+    },
+    {
+      "id": "rai-coding-flow",
+      "name": "RAI Coding Flow",
+      "description": "Routes Robotics & AI coding work through design, prototyping, debugging, testing, review, and reproducibility checks. Use when the user asks to build, debug, test, review, or restructure Python, C++, ROS, simulation, ML, or experiment code.",
+      "path": "skills/flows/rai-coding-flow",
+      "type": "flow",
+      "domain": "engineering",
+      "maturity": "draft",
+      "depends_on": [
+        "robotics-ai-coding-flow"
+      ],
+      "tags": [
+        "robotics",
+        "ai",
+        "coding",
+        "testing"
+      ],
+      "source_inspiration": [
+        "mattpocock/skills",
+        "addyosmani/agent-skills",
+        "obra/superpowers"
+      ]
+    },
+    {
+      "id": "paper-search-protocol",
+      "name": "Paper Search Protocol",
+      "description": "Builds reproducible Robotics & AI search logs across papers, projects, datasets, benchmarks, and code. Use when the user asks for literature search, project search, survey source collection, related work discovery, or field onboarding.",
+      "path": "skills/research/paper-search-protocol",
+      "type": "atomic",
+      "domain": "research",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "literature-search",
+        "survey",
+        "robotics",
+        "ai"
+      ],
+      "source_inspiration": [
+        "nature-academic-search",
+        "mattpocock/skills"
+      ]
+    },
+    {
+      "id": "paper-reading-card",
+      "name": "Paper Reading Card",
+      "description": "Turns one Robotics & AI paper into a structured, source-grounded reading card. Use when the user asks to read, summarize, compare, or extract claims, methods, experiments, limitations, and reusable ideas from a paper.",
+      "path": "skills/research/paper-reading-card",
+      "type": "atomic",
+      "domain": "research",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "paper-reading",
+        "summary",
+        "robotics",
+        "ai"
+      ],
+      "source_inspiration": [
+        "nature-reader",
+        "mattpocock/skills"
+      ]
+    },
+    {
+      "id": "evidence-matrix-builder",
+      "name": "Evidence Matrix Builder",
+      "description": "Builds comparison matrices, taxonomies, and gap maps from paper cards, projects, datasets, or benchmark notes. Use when the user asks to synthesize a literature base, write a survey, compare methods, or find research gaps.",
+      "path": "skills/research/evidence-matrix-builder",
+      "type": "atomic",
+      "domain": "research",
+      "maturity": "draft",
+      "depends_on": [
+        "paper-reading-card"
+      ],
+      "tags": [
+        "evidence",
+        "survey",
+        "taxonomy",
+        "gap-analysis"
+      ],
+      "source_inspiration": [
+        "mattpocock/skills",
+        "ml-paper-writing"
+      ]
+    },
+    {
+      "id": "research-idea-rubric",
+      "name": "Research Idea Rubric",
+      "description": "Scores and refines Robotics & AI project ideas for novelty, feasibility, baselines, evaluation, risk, and publishability. Use when brainstorming, ranking, stress-testing, or improving research ideas with or without the user.",
+      "path": "skills/ideation/research-idea-rubric",
+      "type": "reference",
+      "domain": "ideation",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "brainstorming",
+        "research-ideas",
+        "robotics",
+        "ai"
+      ],
+      "source_inspiration": [
+        "brainstorming-research-ideas",
+        "creative-thinking-for-research",
+        "mattpocock/skills"
+      ]
+    },
+    {
+      "id": "venue-paper-outline",
+      "name": "Venue Paper Outline",
+      "description": "Plans Robotics & AI conference paper structure for ICRA, RSS, CoRL, ICML, ICLR, and NeurIPS style submissions. Use when the user asks for an outline, paper skeleton, section plan, contribution framing, or venue-aware writing strategy.",
+      "path": "skills/writing/venue-paper-outline",
+      "type": "reference",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "paper-writing",
+        "conference",
+        "icra",
+        "neurips"
+      ],
+      "source_inspiration": [
+        "ml-paper-writing",
+        "systems-paper-writing",
+        "nature-writing"
+      ]
+    },
+    {
+      "id": "citation-integrity-auditor",
+      "name": "Citation Integrity Auditor",
+      "description": "Audits whether citations are real, traceable, and actually support manuscript claims. Use when the user asks to verify references, check citation truthfulness, map claims to papers, detect hallucinated citations, or audit related work.",
+      "path": "skills/writing/citation-integrity-auditor",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "citations",
+        "fact-checking",
+        "paper-writing",
+        "audit"
+      ],
+      "source_inspiration": [
+        "nature-citation",
+        "nature-academic-search"
+      ]
+    },
+    {
+      "id": "scientific-figure-director",
+      "name": "Scientific Figure Director",
+      "description": "Plans, prompts, and audits scientific figures, diagrams, and GPT Image outputs for Robotics & AI papers. Use when the user asks where figures are needed, what figure to draw, how to prompt image generation, or whether a returned figure is scientifically valid.",
+      "path": "skills/figures/scientific-figure-director",
+      "type": "tool",
+      "domain": "figures",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "figures",
+        "diagrams",
+        "image-generation",
+        "paper-writing"
+      ],
+      "source_inspiration": [
+        "nature-figure",
+        "academic-plotting",
+        "DayuanJiang/next-ai-draw-io"
+      ]
+    },
+    {
+      "id": "paper-red-team-review",
+      "name": "Paper Red-Team Review",
+      "description": "Performs harsh but evidence-grounded review of Robotics & AI papers across factual accuracy, logic, novelty, experiments, citations, figures, writing, and reviewer risk. Use when the user asks for ruthless proofreading, red-team review, paper critique, or pre-submission audit.",
+      "path": "skills/review/paper-red-team-review",
+      "type": "atomic",
+      "domain": "review",
+      "maturity": "draft",
+      "depends_on": [
+        "citation-integrity-auditor",
+        "scientific-figure-director"
+      ],
+      "tags": [
+        "review",
+        "proofreading",
+        "paper-writing",
+        "red-team"
+      ],
+      "source_inspiration": [
+        "code-review",
+        "nature-polishing",
+        "nature-writing"
+      ]
+    },
+    {
+      "id": "robotics-ai-coding-flow",
+      "name": "Robotics AI Coding Flow",
+      "description": "Applies Robotics & AI code quality checks for Python, C++, ROS, simulation, ML experiments, and reproducibility. Use when implementing, debugging, testing, or reviewing Robotics and AI research code.",
+      "path": "skills/engineering/robotics-ai-coding-flow",
+      "type": "atomic",
+      "domain": "engineering",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "coding",
+        "robotics",
+        "ros",
+        "reproducibility"
+      ],
+      "source_inspiration": [
+        "diagnosing-bugs",
+        "tdd",
+        "code-review",
+        "codebase-design",
+        "domain-modeling",
+        "git-guardrails-claude-code"
+      ]
+    }
+  ]
 }

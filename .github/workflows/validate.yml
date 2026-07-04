@@ -20,3 +20,6 @@ jobs:
 
       - name: Validate catalog
         run: python scripts/validate_catalog.py
+
+      - name: Validate forward tests
+        run: python scripts/validate_forward_tests.py

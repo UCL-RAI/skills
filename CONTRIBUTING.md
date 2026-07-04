@@ -24,6 +24,7 @@ A strong skill has:
 
 ```bash
 python scripts/validate_catalog.py
+python scripts/validate_forward_tests.py
 ```
 
 6. Open a pull request and explain:
@@ -32,6 +33,19 @@ python scripts/validate_catalog.py
 - Who should use it.
 - Any external tools, papers, APIs, or datasets it relies on.
 - How you tested or sanity-checked the workflow.
+
+## Choose the Right Layer
+
+Before adding a skill, decide which layer it belongs to:
+
+| Layer | Add one when | Avoid when |
+| --- | --- | --- |
+| `flow` | The user needs routing across several skills and phase gates. | The detailed workflow fits inside one atomic skill. |
+| `atomic` | One repeatable task produces one checkable artifact. | The skill is mostly a shared rubric or vocabulary. |
+| `reference` | Multiple skills need the same rubric, venue framing, or terminology. | It secretly performs a multi-step workflow. |
+| `tool` | A tool or output medium needs a protocol and validation contract. | It only describes a tool without checking the output. |
+
+Prefer adding detail to an existing skill when the boundary already fits. Add a new skill only when it has a distinct trigger, artifact, and completion condition.
 
 ## Catalog Entry Format
 
@@ -43,16 +57,26 @@ Each skill entry in `catalog.json` should look like this:
   "name": "Example Skill",
   "description": "A short description of the concrete task this skill handles.",
   "path": "skills/research/example-skill",
+  "type": "atomic",
+  "domain": "research",
+  "maturity": "draft",
+  "depends_on": [],
   "tags": ["research", "workflow"]
 }
 ```
+
+Allowed `type` values are `flow`, `atomic`, `reference`, and `tool`.
+
+Allowed `maturity` values are `draft`, `beta`, and `stable`.
 
 ## Review Checklist
 
 Before requesting review, check that:
 
 - `python scripts/validate_catalog.py` passes.
+- `python scripts/validate_forward_tests.py` passes when forward tests are present.
 - The skill has a narrow, understandable scope.
+- The `catalog.json` entry matches the `SKILL.md` frontmatter.
 - The instructions do not require private credentials.
 - Claims about tools, libraries, APIs, or research papers are accurate.
 - Examples are small enough to inspect.

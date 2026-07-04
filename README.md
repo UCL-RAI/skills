@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./docs/assets/ucl-social-icon-square.jpg" alt="UCL social icon" width="120" />
+
 # UCL-RAI Skills
 
 **Reusable agent skills for research, robotics, AI, and engineering workflows.**
@@ -18,7 +20,7 @@ Built by UCL Robotics & AI students for people who want practical, inspectable, 
 
 UCL-RAI Skills is a student-led open-source collection of reusable skills for AI coding agents, research assistants, and automation workflows.
 
-The repository is intentionally small at the start. The first public skills will be added after review; until then, this repo provides the structure, contribution path, validation workflow, and skill template.
+The repository is intentionally small at the start. The current catalog contains 12 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
 
 The homepage style is inspired by clear, developer-facing open-source repositories such as [f/prompts.chat](https://github.com/f/prompts.chat), [DayuanJiang/next-ai-draw-io](https://github.com/DayuanJiang/next-ai-draw-io), and [mattpocock/skills](https://github.com/mattpocock/skills).
 
@@ -31,41 +33,78 @@ The homepage style is inspired by clear, developer-facing open-source repositori
 | AI engineering | Dataset preparation, model evaluation, agent workflows, prompt systems, and tooling. |
 | Teaching and coursework | Practical templates that are easy to inspect, adapt, and cite. |
 
+## How to Navigate
+
+Start from one of the three router skills unless you already know the atomic skill you need:
+
+| User goal | Start here |
+| --- | --- |
+| Enter a field, build a literature base, plan a survey, or brainstorm a Robotics & AI project. | `rai-research-flow` |
+| Outline, revise, audit, or prepare a Robotics & AI conference paper. | `rai-paper-flow` |
+| Build, debug, test, or review Robotics & AI research code. | `rai-coding-flow` |
+
+Router skills stay thin: they select the right subskills, enforce gates, and name the expected artifacts. Detailed procedures live in focused atomic, reference, or tool skills.
+
+## Skill System
+
+The library is organized as a small research workflow system:
+
+| Layer | Role | Examples |
+| --- | --- | --- |
+| `flow` | User-invoked orchestration across several skills. | `rai-research-flow`, `rai-paper-flow`, `rai-coding-flow` |
+| `atomic` | One concrete repeatable task with a checkable artifact. | `paper-reading-card`, `citation-integrity-auditor` |
+| `reference` | Shared rubric or vocabulary used by other skills. | `research-idea-rubric`, `venue-paper-outline` |
+| `tool` | Tool-specific workflow or validation protocol. | `scientific-figure-director` |
+
+See [docs/architecture.md](./docs/architecture.md) and [docs/skill-roadmap.md](./docs/skill-roadmap.md) for the design rationale.
+
+## Current Catalog
+
+The initial catalog contains draft skills for the Robotics & AI research lifecycle:
+
+| Skill | Type | Purpose |
+| --- | --- | --- |
+| `rai-research-flow` | flow | Route research onboarding, surveys, ideation, writing, figures, and audits. |
+| `rai-paper-flow` | flow | Route conference-paper writing for Robotics & AI venues. |
+| `rai-coding-flow` | flow | Route Robotics & AI coding work. |
+| `paper-search-protocol` | atomic | Build reproducible search logs. |
+| `paper-reading-card` | atomic | Create source-grounded single-paper cards. |
+| `evidence-matrix-builder` | atomic | Build comparison matrices and gap maps. |
+| `research-idea-rubric` | reference | Score and refine project ideas. |
+| `venue-paper-outline` | reference | Plan ICRA/RSS/CoRL/ICML/ICLR/NeurIPS-style papers. |
+| `citation-integrity-auditor` | atomic | Check whether citations support claims. |
+| `scientific-figure-director` | tool | Plan, prompt, and audit scientific figures. |
+| `paper-red-team-review` | atomic | Perform harsh evidence-grounded paper review. |
+| `robotics-ai-coding-flow` | atomic | Apply Robotics & AI code quality checks. |
+
+All current skills are `draft` maturity. They are useful as scaffolds and review targets, but should be forward-tested before being treated as stable.
+
 ## Repository Map
 
 ```text
 .
-|-- catalog.json                 # Machine-readable registry of published skills
-|-- skills/                      # Published skills live here
-|-- templates/SKILL.md           # Starter template for new skills
-|-- scripts/validate_catalog.py  # Lightweight catalog validation
+|-- catalog.json                 # Machine-readable registry
+|-- catalog.schema.json          # Catalog schema
+|-- docs/                        # Architecture, roadmap, and curation policy
+|-- examples/                    # Realistic example prompts and artifact shapes
+|-- forward-tests/               # Manual forward-test prompts and pass criteria
+|-- skills/                      # Published skills
+|-- templates/SKILL.md           # Starter template
+|-- scripts/                     # Catalog and forward-test validators
 |-- .github/workflows/validate.yml
 |-- CONTRIBUTING.md
 `-- LICENSE
 ```
 
-## Current Catalog
-
-No public skills have been added yet.
-
-The catalog is ready for reviewable entries once the first skills are selected. Each published skill should have:
-
-| Field | Purpose |
-| --- | --- |
-| `id` | Stable kebab-case identifier. |
-| `name` | Human-readable title. |
-| `description` | One-sentence summary of what the skill does. |
-| `path` | Directory containing the skill's `SKILL.md`. |
-| `tags` | Searchable topics such as `robotics`, `research`, `python`, or `evaluation`. |
-
 ## Quickstart
 
-Clone the repository and validate the empty catalog:
+Clone the repository and validate the catalog:
 
 ```bash
 git clone https://github.com/UCL-RAI/skills.git
 cd skills
 python scripts/validate_catalog.py
+python scripts/validate_forward_tests.py
 ```
 
 To draft a new skill:
@@ -76,6 +115,8 @@ cp templates/SKILL.md skills/research/example-skill/SKILL.md
 ```
 
 Then add the skill metadata to `catalog.json` and run validation again.
+
+See [docs/usage.md](./docs/usage.md) for local skill usage, validation, and forward-testing guidance.
 
 ## Design Principles
 
@@ -97,7 +138,7 @@ Start with [CONTRIBUTING.md](./CONTRIBUTING.md), use [templates/SKILL.md](./temp
 
 ## Status
 
-This is an early scaffold. The first skills will be added after the maintainers agree on scope, naming, and review standards.
+This is an early scaffold with 12 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
 
 ## License
 
