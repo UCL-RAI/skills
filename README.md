@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/ucl-masthead-dark-purple.png">
   <source media="(prefers-color-scheme: light)" srcset="./docs/assets/ucl-masthead-off-white.png">
-  <img src="./docs/assets/ucl-masthead-off-white.png" alt="UCL masthead" width="720">
+  <img src="./docs/assets/ucl-masthead-off-white.png" alt="UCL masthead" width="800">
 </picture>
 
 # UCL-RAI Skills
