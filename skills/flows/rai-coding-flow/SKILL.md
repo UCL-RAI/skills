@@ -28,7 +28,7 @@ Read the repo's local instructions, setup files, and existing tests before propo
 | New feature | Prefer a test-first vertical slice when practical. | Verify the smallest behavior that exercises the new path. |
 | Prototype question | Build throwaway code only to answer the question. | Preserve the conclusion and delete or isolate disposable code. |
 | Review | Check standards, spec fit, reproducibility, and Robotics-specific failure modes. | Lead with findings and file/line evidence. |
-| Reproducibility task | Trace configs, seeds, datasets, checkpoints, logs, and commands. | Report what can and cannot be rerun. |
+| Reproducibility task | `experiment-provenance-auditor` for result traceability, then code-level fixes as needed. | Report what can and cannot be rerun. |
 
 ## Robotics & AI Checks
 

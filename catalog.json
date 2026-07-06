@@ -25,12 +25,20 @@
       "domain": "orchestration",
       "maturity": "draft",
       "depends_on": [
+        "knowledge-base-onboarding",
         "paper-search-protocol",
         "paper-reading-card",
         "evidence-matrix-builder",
         "research-idea-rubric",
         "venue-paper-outline",
         "citation-integrity-auditor",
+        "manuscript-structure-auditor",
+        "scientific-writing-editor",
+        "related-work-positioning",
+        "abstract-introduction-builder",
+        "benchmark-audit",
+        "experiment-provenance-auditor",
+        "limitations-failure-case-auditor",
         "scientific-figure-director",
         "paper-red-team-review"
       ],
@@ -50,7 +58,7 @@
     {
       "id": "rai-paper-flow",
       "name": "RAI Paper Flow",
-      "description": "Routes Robotics & AI conference paper writing for ICRA, RSS, CoRL, ICML, ICLR, and NeurIPS style submissions. Use when the user asks to outline, draft, revise, audit, or prepare a research paper for Robotics or AI venues.",
+      "description": "Routes Robotics & AI conference paper writing for ICRA, RSS, CoRL, ICML, ICLR, and NeurIPS style submissions. Use when the user asks to outline, draft, revise, audit, rebut, package, or prepare a research paper for Robotics or AI venues.",
       "path": "skills/flows/rai-paper-flow",
       "type": "flow",
       "domain": "writing",
@@ -59,8 +67,17 @@
         "research-idea-rubric",
         "venue-paper-outline",
         "citation-integrity-auditor",
+        "manuscript-structure-auditor",
+        "scientific-writing-editor",
+        "related-work-positioning",
+        "abstract-introduction-builder",
+        "benchmark-audit",
+        "experiment-provenance-auditor",
+        "limitations-failure-case-auditor",
         "scientific-figure-director",
-        "paper-red-team-review"
+        "paper-red-team-review",
+        "reviewer-response-builder",
+        "latex-submission-checker"
       ],
       "tags": [
         "paper-writing",
@@ -82,7 +99,8 @@
       "domain": "engineering",
       "maturity": "draft",
       "depends_on": [
-        "robotics-ai-coding-flow"
+        "robotics-ai-coding-flow",
+        "experiment-provenance-auditor"
       ],
       "tags": [
         "robotics",
@@ -94,6 +112,27 @@
         "mattpocock/skills",
         "addyosmani/agent-skills",
         "obra/superpowers"
+      ]
+    },
+    {
+      "id": "knowledge-base-onboarding",
+      "name": "Knowledge Base Onboarding",
+      "description": "Onboards a new Robotics or AI research area, project folder, or lab knowledge base into a structured source inventory, concept map, artifact map, and next-action plan. Use when the user starts a new area, inherits notes/code/papers, or needs a reusable research memory structure.",
+      "path": "skills/research/knowledge-base-onboarding",
+      "type": "atomic",
+      "domain": "research",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "knowledge-base",
+        "onboarding",
+        "research",
+        "provenance"
+      ],
+      "source_inspiration": [
+        "FAIR principles",
+        "The Turing Way",
+        "ACM Artifact Review and Badging"
       ]
     },
     {
@@ -201,6 +240,57 @@
       ]
     },
     {
+      "id": "related-work-positioning",
+      "name": "Related Work Positioning",
+      "description": "Positions a paper against prior work by building source-grounded clusters, contribution boundaries, novelty claims, and comparison language. Use when writing related work, introduction positioning, survey paragraphs, or responses about novelty and differentiation.",
+      "path": "skills/writing/related-work-positioning",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "paper-search-protocol",
+        "paper-reading-card",
+        "evidence-matrix-builder",
+        "citation-integrity-auditor"
+      ],
+      "tags": [
+        "related-work",
+        "novelty",
+        "paper-writing",
+        "positioning"
+      ],
+      "source_inspiration": [
+        "UNC Writing Center literature reviews",
+        "NeurIPS Paper Checklist",
+        "citation-integrity-auditor"
+      ]
+    },
+    {
+      "id": "abstract-introduction-builder",
+      "name": "Abstract Introduction Builder",
+      "description": "Builds or revises paper abstracts and introductions from verified problem, gap, method, evidence, contribution, and limitation material. Use when the user needs a conference-paper abstract, introduction, contribution paragraph, or opening narrative without overstating evidence.",
+      "path": "skills/writing/abstract-introduction-builder",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "related-work-positioning",
+        "benchmark-audit",
+        "limitations-failure-case-auditor"
+      ],
+      "tags": [
+        "abstract",
+        "introduction",
+        "paper-writing",
+        "claims"
+      ],
+      "source_inspiration": [
+        "UNC Writing Center introductions",
+        "UNC Writing Center literature reviews",
+        "NeurIPS Paper Checklist"
+      ]
+    },
+    {
       "id": "citation-integrity-auditor",
       "name": "Citation Integrity Auditor",
       "description": "Audits whether citations are real, traceable, and actually support manuscript claims. Use when the user asks to verify references, check citation truthfulness, map claims to papers, detect hallucinated citations, or audit related work.",
@@ -218,6 +308,116 @@
       "source_inspiration": [
         "nature-citation",
         "nature-academic-search"
+      ]
+    },
+    {
+      "id": "manuscript-structure-auditor",
+      "name": "Manuscript Structure Auditor",
+      "description": "Audits manuscript coherence, section flow, paragraph logic, repetition, contradictions, and claim threading. Use when the user asks whether a paper draft, section, abstract, introduction, related work, or conclusion is logically connected, non-redundant, and easy for reviewers to follow.",
+      "path": "skills/writing/manuscript-structure-auditor",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "paper-writing",
+        "coherence",
+        "structure",
+        "review"
+      ],
+      "source_inspiration": [
+        "nature-polishing",
+        "nature-writing",
+        "paper-red-team-review"
+      ]
+    },
+    {
+      "id": "scientific-writing-editor",
+      "name": "Scientific Writing Editor",
+      "description": "Edits academic paper prose for grammar, clarity, concision, scientific tone, reviewer readability, and removal of generic AI-style writing patterns while preserving technical claims. Use after claims, citations, and structure are checked, or when the user asks for grammar editing, human-sounding scientific prose, concise rewriting, or rigorous paper polishing.",
+      "path": "skills/writing/scientific-writing-editor",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "paper-writing",
+        "grammar",
+        "style",
+        "editing"
+      ],
+      "source_inspiration": [
+        "humanizer",
+        "nature-polishing",
+        "nature-writing"
+      ]
+    },
+    {
+      "id": "benchmark-audit",
+      "name": "Benchmark Audit",
+      "description": "Audits benchmark design, baselines, metrics, ablations, statistical reporting, leakage risk, and claim-result alignment for Robotics and AI papers. Use when the user asks whether experiments are convincing, fair, reproducible, or sufficient for paper claims.",
+      "path": "skills/evaluation/benchmark-audit",
+      "type": "atomic",
+      "domain": "evaluation",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "benchmarks",
+        "experiments",
+        "evaluation",
+        "reproducibility"
+      ],
+      "source_inspiration": [
+        "NeurIPS Paper Checklist",
+        "NeurIPS Code and Data Submission Policy",
+        "Papers with Code ML Code Completeness Checklist",
+        "ACM Artifact Review and Badging"
+      ]
+    },
+    {
+      "id": "experiment-provenance-auditor",
+      "name": "Experiment Provenance Auditor",
+      "description": "Audits whether research results are traceable from paper claims back to configs, code versions, data versions, seeds, logs, hardware, and generated artifacts. Use when checking reproducibility, result provenance, experiment tracking, or paper appendix readiness.",
+      "path": "skills/evaluation/experiment-provenance-auditor",
+      "type": "atomic",
+      "domain": "evaluation",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "provenance",
+        "reproducibility",
+        "experiment-tracking",
+        "paper-writing"
+      ],
+      "source_inspiration": [
+        "ACM Artifact Review and Badging",
+        "NeurIPS Code and Data Submission Policy",
+        "Papers with Code ML Code Completeness Checklist",
+        "FAIR principles"
+      ]
+    },
+    {
+      "id": "limitations-failure-case-auditor",
+      "name": "Limitations Failure Case Auditor",
+      "description": "Audits limitations, assumptions, failure cases, negative results, boundary conditions, and ethical or deployment risks in Robotics and AI papers. Use when the user needs a limitations section, failure analysis, responsible research check, or pre-review overclaim audit.",
+      "path": "skills/writing/limitations-failure-case-auditor",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "benchmark-audit"
+      ],
+      "tags": [
+        "limitations",
+        "failure-cases",
+        "responsible-research",
+        "paper-writing"
+      ],
+      "source_inspiration": [
+        "NeurIPS Paper Checklist",
+        "ACL Rolling Review Responsible NLP",
+        "Model Cards",
+        "Datasheets for Datasets"
       ]
     },
     {
@@ -251,6 +451,9 @@
       "maturity": "draft",
       "depends_on": [
         "citation-integrity-auditor",
+        "benchmark-audit",
+        "experiment-provenance-auditor",
+        "limitations-failure-case-auditor",
         "scientific-figure-director"
       ],
       "tags": [
@@ -263,6 +466,52 @@
         "code-review",
         "nature-polishing",
         "nature-writing"
+      ]
+    },
+    {
+      "id": "reviewer-response-builder",
+      "name": "Reviewer Response Builder",
+      "description": "Builds evidence-grounded, point-by-point reviewer responses and rebuttal plans for Robotics and AI papers. Use when the user has reviews, meta-review, AC comments, or rebuttal constraints and needs a concise, non-defensive response strategy.",
+      "path": "skills/writing/reviewer-response-builder",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "citation-integrity-auditor",
+        "benchmark-audit",
+        "limitations-failure-case-auditor"
+      ],
+      "tags": [
+        "rebuttal",
+        "reviewer-response",
+        "paper-writing",
+        "revision"
+      ],
+      "source_inspiration": [
+        "ACL Rolling Review author guidance",
+        "OpenReview rebuttal workflows",
+        "paper-red-team-review"
+      ]
+    },
+    {
+      "id": "latex-submission-checker",
+      "name": "LaTeX Submission Checker",
+      "description": "Checks LaTeX paper source packages for venue formatting, anonymity, buildability, references, figures, arXiv readiness, and submission hygiene. Use before conference submission, arXiv upload, camera-ready, or when LaTeX build/source problems may block a paper.",
+      "path": "skills/writing/latex-submission-checker",
+      "type": "tool",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "latex",
+        "submission",
+        "arxiv",
+        "paper-writing"
+      ],
+      "source_inspiration": [
+        "arXiv TeX submission help",
+        "NeurIPS author guidance",
+        "conference style files"
       ]
     },
     {

@@ -39,7 +39,7 @@ Install only the skills you need. Start with the router skills if you want the f
 - `skills/flows/rai-paper-flow`
 - `skills/flows/rai-coding-flow`
 
-Use the atomic skills directly when you need one artifact, such as a search log, evidence matrix, citation audit, or figure spec.
+Use the atomic skills directly when you need one artifact, such as a search log, onboarding map, evidence matrix, related-work position, abstract/introduction draft, benchmark audit, provenance ledger, citation audit, structure audit, limitations audit, writing edit, reviewer response, submission check, or figure spec.
 
 ## Use with Claude Code or Other Manual Skill Clients
 

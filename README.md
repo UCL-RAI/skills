@@ -20,7 +20,7 @@ Built by UCL Robotics & AI students for people who want practical, inspectable, 
 
 UCL-RAI Skills is a student-led open-source collection of reusable skills for AI coding agents, research assistants, and automation workflows.
 
-The repository is intentionally small at the start. The current catalog contains 12 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
+The repository is intentionally small at the start. The current catalog contains 22 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
 
 The homepage style is inspired by clear, developer-facing open-source repositories such as [f/prompts.chat](https://github.com/f/prompts.chat), [DayuanJiang/next-ai-draw-io](https://github.com/DayuanJiang/next-ai-draw-io), and [mattpocock/skills](https://github.com/mattpocock/skills).
 
@@ -45,6 +45,23 @@ Start from one of the three router skills unless you already know the atomic ski
 
 Router skills stay thin: they select the right subskills, enforce gates, and name the expected artifacts. Detailed procedures live in focused atomic, reference, or tool skills.
 
+## How to Use
+
+Common routes:
+
+- **Enter a new research area**: `rai-research-flow` -> `knowledge-base-onboarding` / `paper-search-protocol` -> `paper-reading-card` -> `evidence-matrix-builder`
+- **Write or revise a paper**: `rai-paper-flow` -> `venue-paper-outline` / `related-work-positioning` / `abstract-introduction-builder` / `citation-integrity-auditor` / `manuscript-structure-auditor` / `scientific-writing-editor` / `scientific-figure-director` / `paper-red-team-review`
+- **Audit experiments**: `rai-paper-flow` -> `benchmark-audit` -> `experiment-provenance-auditor`
+- **Work on code**: `rai-coding-flow` -> `robotics-ai-coding-flow`
+- **Brainstorm a project**: `research-idea-rubric`
+- **Check whether citations support claims**: `citation-integrity-auditor`
+- **Audit coherence and repetition**: `manuscript-structure-auditor`
+- **Edit grammar, clarity, concision, and scientific tone**: `scientific-writing-editor`
+- **Write limitations or failure analysis**: `limitations-failure-case-auditor`
+- **Get a harsh paper review**: `paper-red-team-review`
+- **Respond to reviewers**: `reviewer-response-builder`
+- **Check LaTeX/source package before submission**: `latex-submission-checker`
+
 ## Skill System
 
 The library is organized as a small research workflow system:
@@ -67,14 +84,24 @@ The initial catalog contains draft skills for the Robotics & AI research lifecyc
 | `rai-research-flow` | flow | Route research onboarding, surveys, ideation, writing, figures, and audits. |
 | `rai-paper-flow` | flow | Route conference-paper writing for Robotics & AI venues. |
 | `rai-coding-flow` | flow | Route Robotics & AI coding work. |
+| `knowledge-base-onboarding` | atomic | Build a source inventory, concept map, artifact map, and next-action plan. |
 | `paper-search-protocol` | atomic | Build reproducible search logs. |
 | `paper-reading-card` | atomic | Create source-grounded single-paper cards. |
 | `evidence-matrix-builder` | atomic | Build comparison matrices and gap maps. |
 | `research-idea-rubric` | reference | Score and refine project ideas. |
 | `venue-paper-outline` | reference | Plan ICRA/RSS/CoRL/ICML/ICLR/NeurIPS-style papers. |
+| `related-work-positioning` | atomic | Build source-grounded prior-work clusters and novelty boundaries. |
+| `abstract-introduction-builder` | atomic | Draft abstracts and introductions from verified problem, gap, method, evidence, and scope. |
 | `citation-integrity-auditor` | atomic | Check whether citations support claims. |
+| `manuscript-structure-auditor` | atomic | Audit coherence, section flow, repetition, contradictions, and claim threading. |
+| `scientific-writing-editor` | atomic | Edit grammar, clarity, concision, scientific tone, and generic AI-style prose patterns without changing technical claims. |
+| `benchmark-audit` | atomic | Audit benchmark fit, baselines, metrics, ablations, leakage risk, and claim-result alignment. |
+| `experiment-provenance-auditor` | atomic | Trace paper results back to code, configs, data, seeds, logs, hardware, and generated artifacts. |
+| `limitations-failure-case-auditor` | atomic | Audit limitations, assumptions, failure cases, negative results, and deployment risks. |
 | `scientific-figure-director` | tool | Plan, prompt, and audit scientific figures. |
 | `paper-red-team-review` | atomic | Perform harsh evidence-grounded paper review. |
+| `reviewer-response-builder` | atomic | Build point-by-point reviewer responses and revision plans. |
+| `latex-submission-checker` | tool | Check LaTeX source packages for build, venue, anonymity, arXiv, and submission hygiene. |
 | `robotics-ai-coding-flow` | atomic | Apply Robotics & AI code quality checks. |
 
 All current skills are `draft` maturity. They are useful as scaffolds and review targets, but should be forward-tested before being treated as stable.
@@ -138,7 +165,7 @@ Start with [CONTRIBUTING.md](./CONTRIBUTING.md), use [templates/SKILL.md](./temp
 
 ## Status
 
-This is an early scaffold with 12 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
+This is an early scaffold with 22 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
 
 ## License
 
