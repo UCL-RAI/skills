@@ -29,6 +29,7 @@
         "paper-search-protocol",
         "paper-reading-card",
         "evidence-matrix-builder",
+        "research-plan-grill",
         "research-idea-rubric",
         "venue-paper-outline",
         "citation-integrity-auditor",
@@ -36,10 +37,15 @@
         "scientific-writing-editor",
         "related-work-positioning",
         "abstract-introduction-builder",
+        "paper-draft-builder",
+        "survey-synthesis-builder",
         "benchmark-audit",
         "experiment-provenance-auditor",
+        "experiment-dossier-builder",
+        "paper-code-consistency-auditor",
         "limitations-failure-case-auditor",
         "scientific-figure-director",
+        "slide-talk-builder",
         "paper-red-team-review"
       ],
       "tags": [
@@ -64,6 +70,7 @@
       "domain": "writing",
       "maturity": "draft",
       "depends_on": [
+        "research-plan-grill",
         "research-idea-rubric",
         "venue-paper-outline",
         "citation-integrity-auditor",
@@ -71,10 +78,15 @@
         "scientific-writing-editor",
         "related-work-positioning",
         "abstract-introduction-builder",
+        "paper-draft-builder",
+        "survey-synthesis-builder",
         "benchmark-audit",
         "experiment-provenance-auditor",
+        "experiment-dossier-builder",
+        "paper-code-consistency-auditor",
         "limitations-failure-case-auditor",
         "scientific-figure-director",
+        "slide-talk-builder",
         "paper-red-team-review",
         "reviewer-response-builder",
         "latex-submission-checker"
@@ -99,8 +111,11 @@
       "domain": "engineering",
       "maturity": "draft",
       "depends_on": [
+        "research-plan-grill",
         "robotics-ai-coding-flow",
-        "experiment-provenance-auditor"
+        "experiment-provenance-auditor",
+        "experiment-dossier-builder",
+        "paper-code-consistency-auditor"
       ],
       "tags": [
         "robotics",
@@ -219,6 +234,26 @@
       ]
     },
     {
+      "id": "research-plan-grill",
+      "name": "Research Plan Grill",
+      "description": "Interrogates a Robotics or AI research, paper, experiment, survey, or engineering plan one decision at a time until its objective, evidence, scope, evaluation, risks, and next artifact are explicit. Use when the user asks to be grilled, wants a plan stress-tested through questions, or has an ambiguous design that should be resolved before implementation or writing.",
+      "path": "skills/ideation/research-plan-grill",
+      "type": "atomic",
+      "domain": "ideation",
+      "maturity": "draft",
+      "depends_on": [],
+      "tags": [
+        "interview",
+        "planning",
+        "decision-making",
+        "research"
+      ],
+      "source_inspiration": [
+        "grill-me",
+        "mattpocock/skills"
+      ]
+    },
+    {
       "id": "venue-paper-outline",
       "name": "Venue Paper Outline",
       "description": "Plans Robotics & AI conference paper structure for ICRA, RSS, CoRL, ICML, ICLR, and NeurIPS style submissions. Use when the user asks for an outline, paper skeleton, section plan, contribution framing, or venue-aware writing strategy.",
@@ -311,6 +346,61 @@
       ]
     },
     {
+      "id": "paper-draft-builder",
+      "name": "Paper Draft Builder",
+      "description": "Turns an experiment dossier, verified literature, and venue constraints into a coherent source-grounded conference paper story and Markdown or LaTeX draft. Use when a local writing environment has research results but needs a defensible narrative, contribution structure, section drafting, or a first full paper draft without inventing evidence or citations.",
+      "path": "skills/writing/paper-draft-builder",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "venue-paper-outline",
+        "related-work-positioning",
+        "citation-integrity-auditor",
+        "benchmark-audit",
+        "limitations-failure-case-auditor"
+      ],
+      "tags": [
+        "paper-writing",
+        "drafting",
+        "storyline",
+        "evidence"
+      ],
+      "source_inspiration": [
+        "ml-paper-writing",
+        "systems-paper-writing",
+        "NeurIPS Paper Checklist"
+      ]
+    },
+    {
+      "id": "survey-synthesis-builder",
+      "name": "Survey Synthesis Builder",
+      "description": "Builds a source-grounded Robotics or AI survey from verified reading cards, search logs, evidence matrices, and bibliography records. Use when defining a survey thesis or taxonomy, synthesizing literature across method families, designing section logic and comparison artifacts, revising an existing survey, or drafting survey prose without forcing an empirical-paper structure.",
+      "path": "skills/writing/survey-synthesis-builder",
+      "type": "atomic",
+      "domain": "writing",
+      "maturity": "draft",
+      "depends_on": [
+        "paper-search-protocol",
+        "paper-reading-card",
+        "evidence-matrix-builder",
+        "related-work-positioning",
+        "citation-integrity-auditor",
+        "manuscript-structure-auditor"
+      ],
+      "tags": [
+        "survey",
+        "synthesis",
+        "taxonomy",
+        "literature-review"
+      ],
+      "source_inspiration": [
+        "evidence-matrix-builder",
+        "UNC Writing Center literature reviews",
+        "PRISMA 2020"
+      ]
+    },
+    {
       "id": "manuscript-structure-auditor",
       "name": "Manuscript Structure Auditor",
       "description": "Audits manuscript coherence, section flow, paragraph logic, repetition, contradictions, and claim threading. Use when the user asks whether a paper draft, section, abstract, introduction, related work, or conclusion is logically connected, non-redundant, and easy for reviewers to follow.",
@@ -397,6 +487,53 @@
       ]
     },
     {
+      "id": "experiment-dossier-builder",
+      "name": "Experiment Dossier Builder",
+      "description": "Builds a portable, source-grounded Markdown dossier from a remote research project, including method state, experiment design, result ledgers, figures, failures, provenance, and paper-ready claim candidates. Use on the machine that contains the code and experiment outputs when preparing a handoff for local paper writing, collaborator review, or project archiving.",
+      "path": "skills/evaluation/experiment-dossier-builder",
+      "type": "atomic",
+      "domain": "evaluation",
+      "maturity": "draft",
+      "depends_on": [
+        "experiment-provenance-auditor"
+      ],
+      "tags": [
+        "remote-experiments",
+        "paper-handoff",
+        "provenance",
+        "results"
+      ],
+      "source_inspiration": [
+        "FAIR principles",
+        "ACM Artifact Review and Badging",
+        "NeurIPS Paper Checklist"
+      ]
+    },
+    {
+      "id": "paper-code-consistency-auditor",
+      "name": "Paper Code Consistency Auditor",
+      "description": "Audits whether a Robotics or AI manuscript accurately describes its implementation, configs, data pipeline, training and inference behavior, evaluation code, defaults, and generated tables or figures. Use when reconciling a paper with a codebase, preparing an artifact release, checking implementation drift, or verifying that equations, algorithms, hyperparameters, and system claims match the released code.",
+      "path": "skills/evaluation/paper-code-consistency-auditor",
+      "type": "atomic",
+      "domain": "evaluation",
+      "maturity": "draft",
+      "depends_on": [
+        "benchmark-audit",
+        "experiment-provenance-auditor"
+      ],
+      "tags": [
+        "paper-code",
+        "consistency",
+        "artifact-review",
+        "implementation"
+      ],
+      "source_inspiration": [
+        "ACM Artifact Review and Badging",
+        "NeurIPS Paper Checklist",
+        "Papers with Code ML Code Completeness Checklist"
+      ]
+    },
+    {
       "id": "limitations-failure-case-auditor",
       "name": "Limitations Failure Case Auditor",
       "description": "Audits limitations, assumptions, failure cases, negative results, boundary conditions, and ethical or deployment risks in Robotics and AI papers. Use when the user needs a limitations section, failure analysis, responsible research check, or pre-review overclaim audit.",
@@ -439,6 +576,30 @@
         "nature-figure",
         "academic-plotting",
         "DayuanJiang/next-ai-draw-io"
+      ]
+    },
+    {
+      "id": "slide-talk-builder",
+      "name": "Slide Talk Builder",
+      "description": "Builds timed, source-grounded research talks and validated slide decks from papers, surveys, experiment dossiers, or project artifacts. Use when preparing a lab meeting, journal club, conference spotlight or oral, invited talk, project update, thesis presentation, or paper-to-slides conversion with speaker notes, visual assets, and delivery timing.",
+      "path": "skills/presentation/slide-talk-builder",
+      "type": "tool",
+      "domain": "presentation",
+      "maturity": "draft",
+      "depends_on": [
+        "citation-integrity-auditor",
+        "scientific-figure-director"
+      ],
+      "tags": [
+        "slides",
+        "presentation",
+        "conference-talk",
+        "speaker-notes"
+      ],
+      "source_inspiration": [
+        "presenting-conference-talks",
+        "nature-paper2ppt",
+        "Mike Dahlin Giving a Conference Talk"
       ]
     },
     {

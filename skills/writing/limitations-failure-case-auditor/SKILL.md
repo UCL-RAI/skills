@@ -12,10 +12,13 @@ Use this before final paper review, rebuttal, or camera-ready submission.
 - Draft paper, abstract, introduction, experiments, conclusion, or limitations section.
 - Benchmark results, failed runs, qualitative examples, logs, safety notes, and deployment constraints.
 - Target venue or responsible research checklist if known.
+- Desired depth: `quick`, `standard`, or `deep`; default to `quick` for daily overclaim review.
 
-Read `references/limitations-checks.md` when auditing a full paper or claims with deployment risk.
+Read `references/limitations-checks.md` for standard or deep audits, or when claims involve safety, humans, deployment, or responsible research risk.
 
 ## Workflow
+
+For quick triage, inspect only claims whose scope is likely too broad: generality, robustness, safety, deployment, data efficiency, real-world transfer, and negative-result omissions.
 
 1. Extract claims that imply generality, safety, robustness, deployment, fairness, or real-world readiness.
 2. Identify assumptions: data, robot platform, sensors, simulator, tasks, metrics, compute, user population, and operating conditions.
@@ -26,6 +29,18 @@ Read `references/limitations-checks.md` when auditing a full paper or claims wit
 7. Flag claims that must be narrowed before review.
 
 ## Output
+
+For quick triage:
+
+```markdown
+## Claims to Narrow
+| Claim | Why scope is too broad | Safer wording |
+| --- | --- | --- |
+
+## Missing Failure Evidence
+```
+
+For standard or deep audits:
 
 ```markdown
 ## Limitations and Failure Case Audit
@@ -55,11 +70,12 @@ Read `references/limitations-checks.md` when auditing a full paper or claims wit
 
 ## Validation
 
-- Each limitation connects to a claim, assumption, result, or missing evaluation.
+- In quick triage, each claim-to-narrow has a concrete scope reason and safer wording.
+- In standard or deep audits, each limitation connects to a claim, assumption, result, or missing evaluation.
 - Failure cases explain what readers should infer.
 - Strong claims are narrowed when evidence is absent.
 - Responsible research concerns are checked when humans, robots, safety, or societal deployment are in scope.
 
 ## Completion
 
-Done means the paper's scope boundaries are explicit, failure cases are interpretable, and overclaims are either supported or narrowed.
+Done means the chosen depth is explicit, scope boundaries are visible, failure cases are interpretable when checked, and overclaims are either supported or narrowed.

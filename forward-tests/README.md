@@ -16,6 +16,7 @@ These are not automated benchmark scores. They are review fixtures for forward-t
 | Skill | Test |
 | --- | --- |
 | `knowledge-base-onboarding` | [`knowledge-base-onboarding.md`](./knowledge-base-onboarding.md) |
+| `research-plan-grill` | [`research-plan-grill.md`](./research-plan-grill.md) |
 | `paper-search-protocol` | [`paper-search-protocol.md`](./paper-search-protocol.md) |
 | `evidence-matrix-builder` | [`evidence-matrix-builder.md`](./evidence-matrix-builder.md) |
 | `related-work-positioning` | [`related-work-positioning.md`](./related-work-positioning.md) |
@@ -24,6 +25,11 @@ These are not automated benchmark scores. They are review fixtures for forward-t
 | `scientific-writing-editor` | [`scientific-writing-editor.md`](./scientific-writing-editor.md) |
 | `benchmark-audit` | [`benchmark-audit.md`](./benchmark-audit.md) |
 | `experiment-provenance-auditor` | [`experiment-provenance-auditor.md`](./experiment-provenance-auditor.md) |
+| `experiment-dossier-builder` | [`experiment-dossier-builder.md`](./experiment-dossier-builder.md) |
+| `paper-code-consistency-auditor` | [`paper-code-consistency-auditor.md`](./paper-code-consistency-auditor.md) |
+| `paper-draft-builder` | [`paper-draft-builder.md`](./paper-draft-builder.md) |
+| `survey-synthesis-builder` | [`survey-synthesis-builder.md`](./survey-synthesis-builder.md) |
+| `slide-talk-builder` | [`slide-talk-builder.md`](./slide-talk-builder.md) |
 | `limitations-failure-case-auditor` | [`limitations-failure-case-auditor.md`](./limitations-failure-case-auditor.md) |
 | `scientific-figure-director` | [`scientific-figure-director.md`](./scientific-figure-director.md) |
 | `paper-red-team-review` | [`paper-red-team-review.md`](./paper-red-team-review.md) |

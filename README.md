@@ -14,10 +14,10 @@ Reusable agent skills for literature search, knowledge onboarding, paper writing
 
 [![Validate](https://github.com/UCL-RAI/skills/actions/workflows/validate.yml/badge.svg)](https://github.com/UCL-RAI/skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f766e.svg)](./LICENSE)
-[![Skills](https://img.shields.io/badge/skills-22-9333ea.svg)](./catalog.json)
+[![Skills](https://img.shields.io/badge/skills-28-9333ea.svg)](./catalog.json)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-f59e0b.svg)](./CONTRIBUTING.md)
 
-[Quickstart](#quickstart) · [Choose a Flow](#choose-a-flow) · [Skill Catalog](#skill-catalog) · [Quality Bar](#quality-bar) · [Contributing](#contributing)
+[Quickstart](#quickstart) · [Choose a Flow](#choose-a-flow) · [Daily Paper Modes](#daily-paper-modes) · [Skill Catalog](#skill-catalog) · [Quality Bar](#quality-bar) · [Contributing](#contributing)
 
 </div>
 
@@ -27,7 +27,7 @@ Reusable agent skills for literature search, knowledge onboarding, paper writing
 
 UCL-RAI Skills is a student-led open-source collection of reusable skills for AI coding agents, research assistants, and automation workflows.
 
-The repository is intentionally small at the start. The current catalog contains 22 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
+The repository is intentionally small at the start. The current catalog contains 28 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
 
 ## At a Glance
 
@@ -67,9 +67,14 @@ Start from one of the three router skills unless you already know the atomic ski
 Common routes:
 
 - **Enter a new research area**: `rai-research-flow` -> `knowledge-base-onboarding` / `paper-search-protocol` -> `paper-reading-card` -> `evidence-matrix-builder`
-- **Write or revise a paper**: `rai-paper-flow` -> `venue-paper-outline` / `related-work-positioning` / `abstract-introduction-builder` / `citation-integrity-auditor` / `manuscript-structure-auditor` / `scientific-writing-editor` / `scientific-figure-director` / `paper-red-team-review`
-- **Audit experiments**: `rai-paper-flow` -> `benchmark-audit` -> `experiment-provenance-auditor`
+- **Write a survey**: `evidence-matrix-builder` -> `survey-synthesis-builder` -> citation and structure audits
+- **Write or revise a paper**: `rai-paper-flow` in `quick` mode, then expand only the pass that exposes the blocker.
+- **Move remote experiments into local paper writing**: run `experiment-dossier-builder` in the remote project, transfer `experiment-dossier.md`, then run `paper-draft-builder` locally.
+- **Audit experiments**: `rai-paper-flow` -> claim-evidence pass -> `benchmark-audit` / `experiment-provenance-auditor`
+- **Check paper against code**: `paper-code-consistency-auditor`
+- **Build a research talk**: `slide-talk-builder`
 - **Work on code**: `rai-coding-flow` -> `robotics-ai-coding-flow`
+- **Stress-test an ambiguous plan**: `research-plan-grill` -> one question at a time -> decision brief -> next atomic skill
 - **Brainstorm a project**: `research-idea-rubric`
 - **Check whether citations support claims**: `citation-integrity-auditor`
 - **Audit coherence and repetition**: `manuscript-structure-auditor`
@@ -78,6 +83,23 @@ Common routes:
 - **Get a harsh paper review**: `paper-red-team-review`
 - **Respond to reviewers**: `reviewer-response-builder`
 - **Check LaTeX/source package before submission**: `latex-submission-checker`
+
+## Daily Paper Modes
+
+`rai-paper-flow` defaults to `quick` mode. Use heavier modes only when the paper is near submission, the review risk is high, or the user asks for a full audit.
+
+| Mode | When to use | Typical output |
+| --- | --- | --- |
+| `quick` | Daily paper work: section edits, "what should I fix next?", abstract polish, reviewer-risk triage. | Top 3-5 blockers, direct edits, and one next pass. |
+| `standard` | Normal revision across structure, evidence, citations, and prose. | Focused audit tables and repair plan. |
+| `deep` | Pre-submission, rebuttal-critical, artifact release, or full-paper red-team review. | Full checklists, provenance, residual risks, and submission blockers. |
+
+Daily routes:
+
+- **Draft pass**: `rai-paper-flow quick` -> `manuscript-structure-auditor` -> `scientific-writing-editor`
+- **Claim-evidence pass**: `rai-paper-flow quick` -> `citation-integrity-auditor` / `benchmark-audit` / `limitations-failure-case-auditor`
+- **Reviewer-risk pass**: `rai-paper-flow quick` -> `paper-red-team-review`
+- **Submission pass**: `rai-paper-flow deep` -> `latex-submission-checker` / `reviewer-response-builder`
 
 ## Skill System
 
@@ -112,6 +134,7 @@ The current catalog contains draft skills for the Robotics & AI research lifecyc
 | `paper-search-protocol` | Build reproducible search logs. |
 | `paper-reading-card` | Create source-grounded single-paper cards. |
 | `evidence-matrix-builder` | Build comparison matrices and gap maps. |
+| `research-plan-grill` | Resolve an ambiguous research or engineering plan one decision at a time before execution. |
 | `research-idea-rubric` | Score and refine project ideas. |
 
 ### Write and Position
@@ -121,6 +144,8 @@ The current catalog contains draft skills for the Robotics & AI research lifecyc
 | `venue-paper-outline` | Plan ICRA/RSS/CoRL/ICML/ICLR/NeurIPS-style papers. |
 | `related-work-positioning` | Build source-grounded prior-work clusters and novelty boundaries. |
 | `abstract-introduction-builder` | Draft abstracts and introductions from verified problem, gap, method, evidence, and scope. |
+| `paper-draft-builder` | Turn an experiment dossier and verified literature into a coherent story brief and conference-paper draft. |
+| `survey-synthesis-builder` | Turn verified literature into a defensible taxonomy, claim-evidence structure, and survey draft. |
 | `scientific-writing-editor` | Edit grammar, clarity, concision, scientific tone, and generic AI-style prose patterns without changing technical claims. |
 | `scientific-figure-director` | Plan, prompt, and audit scientific figures. |
 
@@ -132,6 +157,8 @@ The current catalog contains draft skills for the Robotics & AI research lifecyc
 | `manuscript-structure-auditor` | Audit coherence, section flow, repetition, contradictions, and claim threading. |
 | `benchmark-audit` | Audit benchmark fit, baselines, metrics, ablations, leakage risk, and claim-result alignment. |
 | `experiment-provenance-auditor` | Trace paper results back to code, configs, data, seeds, logs, hardware, and generated artifacts. |
+| `experiment-dossier-builder` | Summarize a remote project, experiments, results, failures, and provenance into a portable Markdown handoff. |
+| `paper-code-consistency-auditor` | Check whether manuscript descriptions, configs, evaluation, tables, and figures match active implementation behavior. |
 | `limitations-failure-case-auditor` | Audit limitations, assumptions, failure cases, negative results, and deployment risks. |
 | `paper-red-team-review` | Perform harsh evidence-grounded paper review. |
 
@@ -141,6 +168,7 @@ The current catalog contains draft skills for the Robotics & AI research lifecyc
 | --- | --- |
 | `reviewer-response-builder` | Build point-by-point reviewer responses and revision plans. |
 | `latex-submission-checker` | Check LaTeX source packages for build, venue, anonymity, arXiv, and submission hygiene. |
+| `slide-talk-builder` | Build timed, source-grounded research talks with a rendered deck, speaker notes, and visual QA. |
 | `robotics-ai-coding-flow` | Apply Robotics & AI code quality checks. |
 
 All current skills are `draft` maturity. They are useful as scaffolds and review targets, but should be forward-tested before being treated as stable.
@@ -206,7 +234,7 @@ Start with [CONTRIBUTING.md](./CONTRIBUTING.md), use [templates/SKILL.md](./temp
 
 ## Status
 
-This is an early scaffold with 22 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
+This is an early scaffold with 28 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
 
 ## License
 

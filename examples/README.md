@@ -24,3 +24,9 @@ Examples may use source markers such as `<verified source URL>` when a real-time
 | `paper-red-team-review` | [`paper-red-team-review-example.md`](./paper-red-team-review-example.md) |
 | `reviewer-response-builder` | [`reviewer-response-builder-example.md`](./reviewer-response-builder-example.md) |
 | `latex-submission-checker` | [`latex-submission-checker-example.md`](./latex-submission-checker-example.md) |
+
+## Dogfooding Case Studies
+
+| Case study | Skills exercised |
+| --- | --- |
+| [`simplevla-paper-flow-dogfood.md`](./simplevla-paper-flow-dogfood.md) | `paper-reading-card`, `rai-paper-flow`, `benchmark-audit`, `limitations-failure-case-auditor`, `paper-red-team-review` |

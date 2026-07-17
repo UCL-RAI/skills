@@ -13,6 +13,7 @@ Use this before detailed sentence-level polishing.
 - Target venue or audience if known.
 - User concern: coherence, repetition, paragraph logic, section order, claim thread, contradiction, or reviewer readability.
 - Optional artifacts: claim-evidence map, citation audit, figure plan, or red-team review.
+- Desired depth: `quick`, `standard`, or `deep`; default to `quick` for daily revision.
 
 If only a short passage is provided, audit local paragraph logic and state that full-paper coherence is not checked.
 
@@ -20,7 +21,7 @@ If only a short passage is provided, audit local paragraph logic and state that 
 
 1. Identify the unit under review: full manuscript, section, subsection, paragraph cluster, or abstract.
 2. Extract the intended claim thread: problem -> gap -> contribution -> method -> evidence -> limitation.
-3. Check section and paragraph jobs against `references/structure-checks.md`.
+3. Check section and paragraph jobs against `references/structure-checks.md` for standard or deep audits.
 4. Mark repeated, redundant, contradictory, misplaced, or unsupported material.
 5. Propose structural moves before sentence rewrites.
 6. Produce a concise audit with severity and repair actions.
@@ -28,6 +29,21 @@ If only a short passage is provided, audit local paragraph logic and state that 
 Read `references/structure-checks.md` when auditing more than one paragraph or when the user asks about coherence, repetition, or flow.
 
 ## Output
+
+For quick daily revision, avoid full tables unless needed:
+
+```markdown
+## Claim Thread
+
+## Top Structure Fixes
+1.
+2.
+3.
+
+## Repetition to Cut
+```
+
+For standard or deep audits:
 
 ```markdown
 ## Claim Thread
@@ -61,11 +77,12 @@ Read `references/structure-checks.md` when auditing more than one paragraph or w
 
 ## Validation
 
-- Every structural issue has a location or quoted cue.
+- In quick revision, top structure fixes have a location or quoted cue and the unchecked scope is explicit.
+- In standard or deep audits, every structural issue has a location or quoted cue.
 - Every proposed deletion or merge preserves the scientific claim.
 - The audit separates structure problems from grammar/style problems.
 - The proposed order follows the paper's evidence state, not just a preferred template.
 
 ## Completion
 
-Done means the manuscript unit has a clear claim thread, repeated material is mapped, major coherence breaks have repair actions, and sentence-level editing can proceed without hiding structural problems.
+Done means the chosen depth is explicit, the manuscript unit has a visible claim thread, major coherence breaks have repair actions, and sentence-level editing can proceed without hiding structural problems.

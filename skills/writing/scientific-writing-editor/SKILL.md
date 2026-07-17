@@ -11,7 +11,7 @@ Use this for sentence-level and paragraph-level editing after structure and evid
 
 - Text to edit: abstract, introduction, related work, method, experiments, conclusion, rebuttal, or cover letter.
 - Target venue or style preference if known.
-- Desired edit strength: light grammar pass, concision pass, scientific tone pass, or substantial rewrite.
+- Desired edit strength: minimal pass, light grammar pass, concision pass, scientific tone pass, or substantial rewrite.
 - Optional writing sample from the user for voice calibration.
 - Constraints: preserve terminology, equations, citations, numbers, baselines, limitations, and claim scope.
 
@@ -21,7 +21,7 @@ If the user asks to "lower AI rate", reframe the task as removing generic, infla
 
 1. Identify the edit mode and preserve non-negotiable technical content.
 2. If the user provides a writing sample, calibrate sentence length, transition style, punctuation habits, and terminology level before editing.
-3. Read `references/style-rules.md` when doing more than a local grammar pass.
+3. Read `references/style-rules.md` for standard or deep edits; skip it for minimal local edits unless the text has obvious formulaic prose.
 4. Mark or mentally separate facts, claims, citations, numbers, equations, and terminology before rewriting.
 5. Edit for grammar, clarity, concision, and scientific tone.
 6. Remove generic AI-style patterns: inflated transitions, repetitive framing, vague intensifiers, unsupported certainty, superficial `-ing` phrases, rule-of-three padding, and vague authority claims.
@@ -32,6 +32,17 @@ If the user asks to "lower AI rate", reframe the task as removing generic, infla
 ## Output Modes
 
 Use the mode that best fits the request:
+
+Minimal output for daily editing:
+
+```markdown
+## Clean Rewrite
+
+## Notes
+- [only claim risks or wording changes the user must know]
+```
+
+Standard output when the user asks for rationale or a heavier edit:
 
 ```markdown
 ## Clean Rewrite
@@ -62,10 +73,11 @@ For grammar-only requests, keep the output minimal and avoid broad rewriting.
 - The edited text preserves all original technical claims unless changes are explicitly listed.
 - Grammar and clarity improve without adding new facts.
 - Redundant or generic phrasing is reduced.
-- Remaining AI-style tells are checked after the first rewrite.
+- For minimal edits, only necessary claim risks or wording caveats are listed.
+- For standard or deep edits, remaining AI-style tells are checked after the first rewrite.
 - Scientific uncertainty remains visible.
 - Any unsupported claim is flagged rather than polished.
 
 ## Completion
 
-Done means the prose is grammatically cleaner, more concise, more scientific in tone, less formulaic, and technically faithful to the original evidence state.
+Done means the chosen edit depth is explicit, the prose is cleaner and technically faithful, and unsupported claims are flagged rather than polished.

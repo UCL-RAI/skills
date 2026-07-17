@@ -12,7 +12,8 @@ Use this as the user-facing router for Robotics & AI engineering work.
 
 Before choosing a workflow, identify:
 
-- task type: implement, debug, test, review, refactor, reproduce, package, or explain;
+- task type: implement, debug, test, review, refactor, reproduce, summarize,
+  package, or explain;
 - code layer: algorithm, ML training/evaluation, simulator, ROS node/package, hardware interface, data processing, plotting/reporting;
 - safety boundary: offline-only, simulation, real hardware, or deployment;
 - verification loop: unit test, integration test, replay log, benchmark script, simulator run, hardware test, or manual inspection.
@@ -23,12 +24,14 @@ Read the repo's local instructions, setup files, and existing tests before propo
 
 | Situation | Route | Required check |
 | --- | --- | --- |
-| Ambiguous feature or system design | Clarify requirements, then use codebase design and domain modeling patterns before implementation. | State assumptions and interfaces before editing. |
+| Ambiguous feature or system design | Inspect the codebase, then use `research-plan-grill` for unresolved user decisions before codebase design or implementation. | Produce a decision brief with assumptions, interfaces, verification, and risks before editing. |
 | Hard bug or regression | Reproduce, minimize, instrument, fix, then add or update a regression check. | Show the failing loop before claiming a fix when feasible. |
 | New feature | Prefer a test-first vertical slice when practical. | Verify the smallest behavior that exercises the new path. |
 | Prototype question | Build throwaway code only to answer the question. | Preserve the conclusion and delete or isolate disposable code. |
 | Review | Check standards, spec fit, reproducibility, and Robotics-specific failure modes. | Lead with findings and file/line evidence. |
 | Reproducibility task | `experiment-provenance-auditor` for result traceability, then code-level fixes as needed. | Report what can and cannot be rerun. |
+| Remote project is ready for local paper writing | `experiment-dossier-builder` | Produce one portable dossier with result ids, source locators, and explicit evidence gaps. |
+| Paper and implementation may have drifted | `paper-code-consistency-auditor` | Compare identified manuscript and code versions before repairing either side. |
 
 ## Robotics & AI Checks
 

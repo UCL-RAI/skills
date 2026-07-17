@@ -12,8 +12,9 @@ Be blunt, but every criticism must be specific and defensible.
 - Full paper, section, abstract, outline, figure, table, or rebuttal draft.
 - Target venue family and review goal if known.
 - Supporting artifacts when available: search log, reading cards, evidence matrix, citation audit, figure plan, experiment results.
+- Desired depth: `quick`, `standard`, or `deep`; default to `quick` for daily draft review.
 
-If the user asks for a full-paper review, read `references/review-dimensions.md` before issuing the final review.
+If the user asks for a full-paper `standard` or `deep` review, read `references/review-dimensions.md` before issuing the final review. For quick review, attack the largest visible risks without expanding every dimension.
 
 ## Workflow
 
@@ -47,6 +48,20 @@ Use:
 
 Lead with findings, not praise.
 
+For quick review:
+
+```markdown
+## Likely Reviewer Problems
+| Severity | Issue | Evidence | Repair path |
+| --- | --- | --- | --- |
+
+## Fast Fixes
+
+## Needs Deep Audit
+```
+
+For standard or deep review:
+
 ```markdown
 ## Blocking
 | Issue | Evidence | Why it matters | Repair path |
@@ -75,11 +90,12 @@ Lead with findings, not praise.
 
 ## Validation
 
-- Every `blocking` and `major` issue cites a location, claim, figure/table, experiment, or missing source.
+- In quick review, the largest visible reviewer risks cite a location, claim, figure/table, experiment, or missing source.
+- In standard or deep review, every `blocking` and `major` issue cites a location, claim, figure/table, experiment, or missing source.
 - Every criticism explains the violated standard.
 - Every suggested rewrite preserves scientific uncertainty.
 - Residual risks separate "not checked" from "checked and failed".
 
 ## Completion
 
-Done means every blocking and major issue has a concrete repair path or a clear statement that new evidence is needed.
+Done means the chosen review depth is explicit, major visible risks have repair paths, and any area that needs deeper audit is listed rather than implied checked.

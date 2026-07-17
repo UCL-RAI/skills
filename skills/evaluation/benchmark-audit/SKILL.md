@@ -13,10 +13,13 @@ Use this before polishing experimental claims or submitting a paper.
 - Claimed contributions and target venue if known.
 - Benchmark details: datasets, simulators, robot setups, tasks, metrics, splits, baselines, ablations, seeds, and compute.
 - Optional artifacts: code, configs, logs, `evidence-matrix-builder` output, and prior papers.
+- Desired depth: `quick`, `standard`, or `deep`; default to `quick` unless the user asks for a full experiment audit.
 
-Read `references/benchmark-checks.md` for a full audit checklist when reviewing more than one table or benchmark.
+Read `references/benchmark-checks.md` for standard or deep audits, or when reviewing more than one table or benchmark. Skip it for quick triage unless benchmark validity is the main blocker.
 
 ## Workflow
+
+For quick triage, prioritize the top rejection risks: unsupported main claim, unfair baseline, missing variance, weak ablation, leakage risk, or overbroad real-world/generalization wording.
 
 1. Extract the paper's claims that depend on benchmark evidence.
 2. Map each claim to the exact table, figure, metric, baseline, ablation, or qualitative result that supports it.
@@ -28,6 +31,18 @@ Read `references/benchmark-checks.md` for a full audit checklist when reviewing 
 8. Classify each issue by severity and state the smallest evidence needed to repair it.
 
 ## Output
+
+For quick triage:
+
+```markdown
+## Top Experiment Risks
+| Risk | Evidence location | Why it matters | Smallest repair |
+| --- | --- | --- | --- |
+
+## Claims to Narrow Now
+```
+
+For standard or deep audits:
 
 ```markdown
 ## Benchmark Audit
@@ -61,11 +76,12 @@ Read `references/benchmark-checks.md` for a full audit checklist when reviewing 
 
 ## Validation
 
-- Every strong experimental claim maps to at least one concrete result.
+- In quick triage, the largest visible experiment risks are ranked and the unchecked scope is explicit.
+- In standard or deep audits, every strong experimental claim maps to at least one concrete result.
 - Every baseline criticism identifies the fairness dimension being violated.
 - Every requested experiment has a decision value, not just "more experiments".
 - Unsupported claims are narrowed or flagged instead of polished.
 
 ## Completion
 
-Done means the benchmark evidence is mapped, weak or unfair comparisons are visible, and each remaining experimental gap has a concrete repair path.
+Done means the chosen audit depth is explicit, weak or unfair comparisons are visible, and each reported experimental gap has a concrete repair path.
