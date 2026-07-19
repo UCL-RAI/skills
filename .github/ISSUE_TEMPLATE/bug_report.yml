@@ -1,0 +1,44 @@
+name: Bug report
+description: Report incorrect, unsafe, or incomplete behavior in a skill or repository tool.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Affected skill or component
+      placeholder: rai-paper-flow or scripts/validate_catalog.py
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Describe the task, relevant inputs, client, and constraints without including private data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide the smallest safe prompt, command, or repository state that reproduces the problem.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public report safety
+      options:
+        - label: I have removed credentials, restricted data, confidential material, and personal information.
+          required: true

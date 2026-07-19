@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "name": "UCL-RAI Skills",
-  "description": "Reusable agent skills for research, robotics, AI, and engineering workflows.",
-  "homepage": "https://github.com/UCL-RAI/skills",
+  "name": "EARL Research Skills",
+  "description": "An open-source research operating system for Robotics & AI, developed and maintained by EARL Lab.",
+  "homepage": "https://github.com/UCL-EARL/skills",
   "license": "MIT",
   "compatibility": [
     "codex",
@@ -10,7 +10,7 @@
     "agent-skills-style"
   ],
   "maintainers": [
-    "UCL Robotics & AI students"
+    "EARL Lab"
   ],
   "contributors": [
     "ylhaichen"

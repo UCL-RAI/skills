@@ -1,177 +1,157 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/ucl-masthead-dark-purple.png">
-  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/ucl-masthead-off-white.png">
-  <img src="./docs/assets/ucl-masthead-off-white.png" alt="UCL masthead" width="800">
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/earl/masthead-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/earl/masthead-light.svg">
+  <img src="./docs/assets/earl/masthead-light.svg" alt="EARL Lab - Embodied Autonomy and Robot Learning Lab" width="900">
 </picture>
 
-# UCL-RAI Skills
+# EARL Research Skills
 
-**A source-grounded skill system for Robotics & AI research and engineering.**
+**An open-source research operating system for Robotics & AI.**
 
-Reusable agent skills for literature search, knowledge onboarding, paper writing, experiment auditing, reviewer response, submission checks, and daily Robotics & AI coding workflows.
+Developed and maintained by **EARL Lab** within **UCL Robotics & AI**.
 
-[![Validate](https://github.com/UCL-RAI/skills/actions/workflows/validate.yml/badge.svg)](https://github.com/UCL-RAI/skills/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-0f766e.svg)](./LICENSE)
-[![Skills](https://img.shields.io/badge/skills-28-9333ea.svg)](./catalog.json)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-f59e0b.svg)](./CONTRIBUTING.md)
+[![Validate](https://github.com/UCL-EARL/skills/actions/workflows/validate.yml/badge.svg)](https://github.com/UCL-EARL/skills/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-38214F.svg)](./LICENSE)
+[![Skills](https://img.shields.io/badge/skills-28-31D6F2.svg)](./docs/catalog.md)
+[![Forward tests](https://img.shields.io/badge/forward_tests-20-983BFE.svg)](./forward-tests/)
 
-[Quickstart](#quickstart) · [Choose a Flow](#choose-a-flow) · [Daily Paper Modes](#daily-paper-modes) · [Skill Catalog](#skill-catalog) · [Quality Bar](#quality-bar) · [Contributing](#contributing)
+[Get Started](#get-started) | [Flagship Workflows](#flagship-workflows) | [System Design](#system-design) | [Catalog](./docs/catalog.md) | [Contribute](#contribute)
 
 </div>
 
----
-
 ## What This Is
 
-UCL-RAI Skills is a student-led open-source collection of reusable skills for AI coding agents, research assistants, and automation workflows.
+EARL Research Skills is a public, composable skill system for AI coding agents and research assistants. It connects literature discovery, evidence synthesis, research planning, remote experiments, paper writing, scientific review, submission, and Robotics & AI engineering into inspectable workflows.
 
-The repository is intentionally small at the start. The current catalog contains 28 draft skills that establish the structure, contribution path, validation workflow, and review standards for the first public release.
+This is not a prompt dump. Each skill has a defined trigger, procedure, output artifact, completion criteria, catalog entry, and validation path.
 
-## At a Glance
+## Flagship Workflows
 
-| Area | What to expect |
-| --- | --- |
-| Research workflows | Literature review, experiment tracking, paper writing, reproducibility, and evaluation helpers. |
-| Robotics workflows | Simulation, control, hardware bring-up, debugging, and deployment helpers. |
-| AI engineering | Dataset preparation, model evaluation, agent workflows, prompt systems, and tooling. |
-| Teaching and coursework | Practical templates that are easy to inspect, adapt, and cite. |
+### Literature to Research Direction
 
-## Workflow
+```text
+rai-research-flow
+  -> paper-search-protocol
+  -> paper-reading-card
+  -> evidence-matrix-builder
+  -> research-idea-rubric / survey-synthesis-builder
+```
+
+Build a reproducible literature base, compare evidence, identify defensible gaps, and turn the result into a research direction or survey structure.
+
+### Experiments to Paper
+
+```text
+experiment-dossier-builder
+  -> paper-code-consistency-auditor
+  -> paper-draft-builder
+  -> scientific-figure-director
+```
+
+Package remote code and experiment results into a portable dossier, verify manuscript-code consistency, and construct a source-grounded paper narrative.
+
+### Paper to Submission
+
+```text
+rai-paper-flow
+  -> manuscript-structure-auditor
+  -> citation-integrity-auditor
+  -> paper-red-team-review
+  -> reviewer-response-builder / latex-submission-checker
+```
+
+Audit logic, citations, evidence, scientific writing, reviewer risk, rebuttal commitments, and submission readiness without changing technical claims silently.
+
+Robotics and AI code work is routed through `rai-coding-flow` and `robotics-ai-coding-flow`, with explicit checks for debugging, experiments, reproducibility, and deployment risk.
+
+## Research Lifecycle
 
 ```mermaid
 flowchart LR
     A["Discover"] --> B["Map Evidence"]
     B --> C["Ideate"]
-    C --> D["Write Paper"]
-    D --> E["Audit Claims"]
-    E --> F["Review / Rebut / Submit"]
-    C --> G["Build Code"]
-    G --> H["Test / Debug / Reproduce"]
-    H --> E
+    C --> D["Design"]
+    D --> E["Write"]
+    E --> F["Audit"]
+    F --> G["Package"]
+    D --> H["Build & Experiment"]
+    H --> F
 ```
 
-Router skills stay thin: they select the right subskills, enforce gates, and name the expected artifacts. Detailed procedures live in focused atomic, reference, or tool skills.
+Router skills select the minimum useful path. Atomic skills perform focused tasks. Reference skills supply shared standards. Tool skills add output-specific protocols and validation.
 
-## Choose a Flow
+## Get Started
 
-Start from one of the three router skills unless you already know the atomic skill you need.
+Clone the repository and validate the system:
 
-| User goal | Start here |
+```bash
+git clone https://github.com/UCL-EARL/skills.git
+cd skills
+python scripts/validate_catalog.py
+python scripts/validate_forward_tests.py
+```
+
+Install the skill directories using the mechanism supported by your agent client, then invoke a router or atomic skill by name. Start with:
+
+| Goal | Entry point |
 | --- | --- |
-| Enter a field, build a literature base, plan a survey, or brainstorm a Robotics & AI project. | `rai-research-flow` |
-| Outline, revise, audit, or prepare a Robotics & AI conference paper. | `rai-paper-flow` |
-| Build, debug, test, or review Robotics & AI research code. | `rai-coding-flow` |
+| Enter a research area or plan a survey | `rai-research-flow` |
+| Draft, revise, or audit a paper | `rai-paper-flow` |
+| Work on Robotics & AI code | `rai-coding-flow` |
+| Move remote experiments into local writing | `experiment-dossier-builder` |
+| Stress-test an ambiguous plan | `research-plan-grill` |
 
-Common routes:
-
-- **Enter a new research area**: `rai-research-flow` -> `knowledge-base-onboarding` / `paper-search-protocol` -> `paper-reading-card` -> `evidence-matrix-builder`
-- **Write a survey**: `evidence-matrix-builder` -> `survey-synthesis-builder` -> citation and structure audits
-- **Write or revise a paper**: `rai-paper-flow` in `quick` mode, then expand only the pass that exposes the blocker.
-- **Move remote experiments into local paper writing**: run `experiment-dossier-builder` in the remote project, transfer `experiment-dossier.md`, then run `paper-draft-builder` locally.
-- **Audit experiments**: `rai-paper-flow` -> claim-evidence pass -> `benchmark-audit` / `experiment-provenance-auditor`
-- **Check paper against code**: `paper-code-consistency-auditor`
-- **Build a research talk**: `slide-talk-builder`
-- **Work on code**: `rai-coding-flow` -> `robotics-ai-coding-flow`
-- **Stress-test an ambiguous plan**: `research-plan-grill` -> one question at a time -> decision brief -> next atomic skill
-- **Brainstorm a project**: `research-idea-rubric`
-- **Check whether citations support claims**: `citation-integrity-auditor`
-- **Audit coherence and repetition**: `manuscript-structure-auditor`
-- **Edit grammar, clarity, concision, and scientific tone**: `scientific-writing-editor`
-- **Write limitations or failure analysis**: `limitations-failure-case-auditor`
-- **Get a harsh paper review**: `paper-red-team-review`
-- **Respond to reviewers**: `reviewer-response-builder`
-- **Check LaTeX/source package before submission**: `latex-submission-checker`
+See [docs/usage.md](./docs/usage.md) for installation patterns, invocation examples, paper modes, and forward-testing guidance.
 
 ## Daily Paper Modes
 
-`rai-paper-flow` defaults to `quick` mode. Use heavier modes only when the paper is near submission, the review risk is high, or the user asks for a full audit.
+`rai-paper-flow` supports three levels of effort:
 
-| Mode | When to use | Typical output |
+| Mode | Use it for | Expected behavior |
 | --- | --- | --- |
-| `quick` | Daily paper work: section edits, "what should I fix next?", abstract polish, reviewer-risk triage. | Top 3-5 blockers, direct edits, and one next pass. |
-| `standard` | Normal revision across structure, evidence, citations, and prose. | Focused audit tables and repair plan. |
-| `deep` | Pre-submission, rebuttal-critical, artifact release, or full-paper red-team review. | Full checklists, provenance, residual risks, and submission blockers. |
+| `quick` | Daily edits and blocker triage | Identify the top issues, make focused repairs, and recommend one next pass. |
+| `standard` | Normal multi-section revision | Audit structure, evidence, citations, and prose without running every possible check. |
+| `deep` | Submission, rebuttal, or high-risk review | Produce full audit ledgers, provenance checks, residual risks, and explicit blockers. |
 
-Daily routes:
+The default is `quick`. Heavier modes are opt-in so routine research work stays efficient.
 
-- **Draft pass**: `rai-paper-flow quick` -> `manuscript-structure-auditor` -> `scientific-writing-editor`
-- **Claim-evidence pass**: `rai-paper-flow quick` -> `citation-integrity-auditor` / `benchmark-audit` / `limitations-failure-case-auditor`
-- **Reviewer-risk pass**: `rai-paper-flow quick` -> `paper-red-team-review`
-- **Submission pass**: `rai-paper-flow deep` -> `latex-submission-checker` / `reviewer-response-builder`
+## Capability Map
 
-## Skill System
-
-The library is organized as a small research workflow system:
-
-| Layer | Role | Examples |
-| --- | --- | --- |
-| `flow` | User-invoked orchestration across several skills. | `rai-research-flow`, `rai-paper-flow`, `rai-coding-flow` |
-| `atomic` | One concrete repeatable task with a checkable artifact. | `paper-reading-card`, `citation-integrity-auditor` |
-| `reference` | Shared rubric or vocabulary used by other skills. | `research-idea-rubric`, `venue-paper-outline` |
-| `tool` | Tool-specific workflow or validation protocol. | `scientific-figure-director` |
-
-See [docs/architecture.md](./docs/architecture.md) and [docs/skill-roadmap.md](./docs/skill-roadmap.md) for the design rationale.
-
-## Skill Catalog
-
-The current catalog contains draft skills for the Robotics & AI research lifecycle:
-
-### Core Routers
-
-| Skill | Purpose |
+| Area | Capabilities |
 | --- | --- |
-| `rai-research-flow` | Route research onboarding, surveys, ideation, writing, figures, and audits. |
-| `rai-paper-flow` | Route conference-paper writing, review, rebuttal, and submission preparation. |
-| `rai-coding-flow` | Route Robotics & AI coding, debugging, testing, review, and reproducibility work. |
+| Discover and map | Knowledge onboarding, reproducible search, paper reading cards, evidence matrices, survey synthesis. |
+| Plan and position | Research grilling, idea evaluation, related-work positioning, venue-aware outlines. |
+| Write and communicate | Abstracts, introductions, paper drafts, scientific editing, figures, research talks. |
+| Audit and review | Citations, benchmarks, provenance, paper-code consistency, limitations, red-team review. |
+| Package and respond | Reviewer responses, LaTeX submission checks, portable experiment dossiers. |
+| Engineer | Robotics & AI coding, debugging, testing, experiment hygiene, and reproducibility. |
 
-### Discover and Map
+Browse all 28 skills in the [Skill Catalog](./docs/catalog.md).
 
-| Skill | Purpose |
+## System Design
+
+| Layer | Responsibility |
 | --- | --- |
-| `knowledge-base-onboarding` | Build a source inventory, concept map, artifact map, and next-action plan. |
-| `paper-search-protocol` | Build reproducible search logs. |
-| `paper-reading-card` | Create source-grounded single-paper cards. |
-| `evidence-matrix-builder` | Build comparison matrices and gap maps. |
-| `research-plan-grill` | Resolve an ambiguous research or engineering plan one decision at a time before execution. |
-| `research-idea-rubric` | Score and refine project ideas. |
+| `flow` | Route work across skills, enforce gates, and name expected artifacts. |
+| `atomic` | Complete one repeatable task with a checkable output. |
+| `reference` | Provide shared rubrics, vocabulary, or venue and domain standards. |
+| `tool` | Apply a tool or output-medium protocol and validate the result. |
 
-### Write and Position
+The `rai-*` prefix means **Robotics & AI**. These stable skill IDs describe the domain and are independent of repository ownership.
 
-| Skill | Purpose |
-| --- | --- |
-| `venue-paper-outline` | Plan ICRA/RSS/CoRL/ICML/ICLR/NeurIPS-style papers. |
-| `related-work-positioning` | Build source-grounded prior-work clusters and novelty boundaries. |
-| `abstract-introduction-builder` | Draft abstracts and introductions from verified problem, gap, method, evidence, and scope. |
-| `paper-draft-builder` | Turn an experiment dossier and verified literature into a coherent story brief and conference-paper draft. |
-| `survey-synthesis-builder` | Turn verified literature into a defensible taxonomy, claim-evidence structure, and survey draft. |
-| `scientific-writing-editor` | Edit grammar, clarity, concision, scientific tone, and generic AI-style prose patterns without changing technical claims. |
-| `scientific-figure-director` | Plan, prompt, and audit scientific figures. |
+Read [docs/architecture.md](./docs/architecture.md), [docs/curation-policy.md](./docs/curation-policy.md), [docs/quality-rubric.md](./docs/quality-rubric.md), and [docs/brand-assets.md](./docs/brand-assets.md) for the full design, acceptance rules, and public identity contract.
 
-### Audit and Review
+## Quality and Status
 
-| Skill | Purpose |
-| --- | --- |
-| `citation-integrity-auditor` | Check whether citations support claims. |
-| `manuscript-structure-auditor` | Audit coherence, section flow, repetition, contradictions, and claim threading. |
-| `benchmark-audit` | Audit benchmark fit, baselines, metrics, ablations, leakage risk, and claim-result alignment. |
-| `experiment-provenance-auditor` | Trace paper results back to code, configs, data, seeds, logs, hardware, and generated artifacts. |
-| `experiment-dossier-builder` | Summarize a remote project, experiments, results, failures, and provenance into a portable Markdown handoff. |
-| `paper-code-consistency-auditor` | Check whether manuscript descriptions, configs, evaluation, tables, and figures match active implementation behavior. |
-| `limitations-failure-case-auditor` | Audit limitations, assumptions, failure cases, negative results, and deployment risks. |
-| `paper-red-team-review` | Perform harsh evidence-grounded paper review. |
+- Source-grounded claims: do not invent citations, benchmarks, APIs, or experimental results.
+- Checkable completion: every skill must define what finished work looks like.
+- Narrow boundaries: prefer focused skills and thin routers over mega-skills.
+- Public reuse: no credentials, private paths, restricted data, or undocumented services.
+- Inspectable provenance: record external inspiration without copying third-party prose.
 
-### Package and Code
-
-| Skill | Purpose |
-| --- | --- |
-| `reviewer-response-builder` | Build point-by-point reviewer responses and revision plans. |
-| `latex-submission-checker` | Check LaTeX source packages for build, venue, anonymity, arXiv, and submission hygiene. |
-| `slide-talk-builder` | Build timed, source-grounded research talks with a rendered deck, speaker notes, and visual QA. |
-| `robotics-ai-coding-flow` | Apply Robotics & AI code quality checks. |
-
-All current skills are `draft` maturity. They are useful as scaffolds and review targets, but should be forward-tested before being treated as stable.
+The catalog currently contains 28 `draft` skills and 20 forward-test fixtures. `draft` is an explicit maturity label, not a claim of production stability. Skills move to `beta` or `stable` only when supported by realistic use evidence under the [quality rubric](./docs/quality-rubric.md).
 
 ## Repository Map
 
@@ -179,62 +159,34 @@ All current skills are `draft` maturity. They are useful as scaffolds and review
 .
 |-- catalog.json                 # Machine-readable registry
 |-- catalog.schema.json          # Catalog schema
-|-- docs/                        # Architecture, roadmap, and curation policy
-|-- examples/                    # Realistic example prompts and artifact shapes
+|-- docs/                        # Architecture, catalog, policies, and usage
+|-- examples/                    # Inspectable examples and artifact shapes
 |-- forward-tests/               # Manual forward-test prompts and pass criteria
 |-- skills/                      # Published skills
-|-- templates/SKILL.md           # Starter template
+|-- templates/SKILL.md           # Skill authoring template
 |-- scripts/                     # Catalog and forward-test validators
-|-- .github/workflows/validate.yml
-|-- CONTRIBUTING.md
-`-- LICENSE
+`-- .github/                     # CI, ownership, and contribution workflows
 ```
 
-## Quickstart
+## About EARL Lab
 
-Clone the repository and validate the catalog:
+**EARL Lab** is an Embodied Autonomy and Robot Learning research group within **UCL Robotics & AI at University College London**. Its research focuses on:
 
-```bash
-git clone https://github.com/UCL-RAI/skills.git
-cd skills
-python scripts/validate_catalog.py
-python scripts/validate_forward_tests.py
-```
+- **Embodied Autonomy**: perception, reasoning, planning, and action under real-world uncertainty.
+- **Generalizable Robot Learning**: transferable, composable, and continually improving robot skills.
+- **Foundation Models for Robotics**: VLA models, multimodal models, and embodied agents for robotic learning and evaluation.
 
-To draft a new skill:
+Rigorous evaluation, reproducibility, and open-source research are shared principles across these directions.
 
-```bash
-mkdir -p skills/research/example-skill
-cp templates/SKILL.md skills/research/example-skill/SKILL.md
-```
+## Contribute
 
-Then add the skill metadata to `catalog.json` and run validation again.
+EARL Research Skills accepts public issues, discussions, and pull requests. External contribution is open; roadmap, scope, quality standards, releases, and maintainer appointments remain governed by EARL Lab.
 
-See [docs/usage.md](./docs/usage.md) for local skill usage, validation, and forward-testing guidance.
-
-## Quality Bar
-
-- **Executable over decorative.** A good skill should help an agent or human do a concrete task correctly.
-- **Small surface area.** Prefer focused skills with clear trigger conditions over large, vague playbooks.
-- **Inspectable reasoning.** Include assumptions, constraints, and validation steps where they matter.
-- **Research-grade caution.** Do not invent facts, APIs, benchmarks, or citations. Point to primary sources when a skill depends on external knowledge.
-- **Reusable by default.** Keep local paths, credentials, and project-specific assumptions out of published skills unless they are explicitly documented.
-
-Every published skill should have clear frontmatter, a catalog entry, completion criteria, and either validation instructions or a forward-test fixture.
-
-## Contributing
-
-Contributions are welcome from UCL Robotics & AI students and the wider community.
-
-Start with [CONTRIBUTING.md](./CONTRIBUTING.md), use [templates/SKILL.md](./templates/SKILL.md), and open a pull request with a short example of when the skill should be used.
+Read [CONTRIBUTING.md](./CONTRIBUTING.md), [GOVERNANCE.md](./GOVERNANCE.md), and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) before contributing.
 
 ## Contributors
 
-- [ylhaichen](https://github.com/ylhaichen)
-
-## Status
-
-This is an early scaffold with 28 draft skills. The next milestone is to forward-test the highest-value skills on realistic Robotics & AI research tasks, tighten the boundaries, and promote selected skills from `draft` to `beta`.
+Current contributors are recorded in [CONTRIBUTORS.md](./CONTRIBUTORS.md) according to their actual work.
 
 ## License
 

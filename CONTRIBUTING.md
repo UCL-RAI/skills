@@ -1,8 +1,10 @@
 # Contributing
 
-Thanks for helping improve UCL-RAI Skills.
+Thanks for helping improve EARL Research Skills.
 
 This repository is meant to stay practical, easy to review, and safe to reuse across research and engineering projects. Please keep contributions focused and executable.
+
+Open-ended usage questions and workflow ideas belong in [GitHub Discussions](https://github.com/UCL-EARL/skills/discussions). Use issues for concrete bugs, proposals, and documentation problems. By participating, you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md) and project [Governance](./GOVERNANCE.md).
 
 ## What Makes a Good Skill
 
@@ -33,6 +35,8 @@ python scripts/validate_forward_tests.py
 - Who should use it.
 - Any external tools, papers, APIs, or datasets it relies on.
 - How you tested or sanity-checked the workflow.
+
+Accepted contributions are attributed according to the work performed. A contribution does not imply EARL Lab membership or maintainer status.
 
 ## Choose the Right Layer
 
@@ -81,6 +85,8 @@ Before requesting review, check that:
 - Claims about tools, libraries, APIs, or research papers are accurate.
 - Examples are small enough to inspect.
 - The contribution does not include copyrighted text that cannot be redistributed.
+- The contribution does not include credentials, restricted data, confidential research material, or personal information.
+- New external sources are recorded as provenance and are compatible with the repository license.
 
 ## Style
 
@@ -89,3 +95,7 @@ Before requesting review, check that:
 - Keep examples short and runnable.
 - Use links to primary documentation where possible.
 - Avoid adding dependencies unless they are necessary.
+
+## Review and Decisions
+
+EARL Lab maintainers review contributions for scope, correctness, evidence discipline, compatibility, and maintainability. Repository-wide architecture, governance, license, and compatibility changes should be discussed before implementation. See [GOVERNANCE.md](./GOVERNANCE.md) for decision responsibilities.

@@ -9,7 +9,13 @@ Describe what this pull request adds or changes.
 - [ ] The catalog entry is present and valid.
 - [ ] `python scripts/validate_catalog.py` passes.
 - [ ] External facts, APIs, papers, or tools are linked to primary sources where relevant.
+- [ ] No credentials, restricted data, confidential material, personal information, or local-only absolute paths are included.
+- [ ] Compatibility and migration impact are documented when IDs, paths, dependencies, or output contracts change.
 
 ## Validation
 
 Paste the command output or describe the manual check.
+
+## Evidence
+
+Link or describe the forward test, realistic use case, or review evidence relevant to this change. Write `not applicable` for documentation-only changes.
